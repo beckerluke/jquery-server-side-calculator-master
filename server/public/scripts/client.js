@@ -6,10 +6,10 @@ function init () {
     getDemo();
 }
 
-function getDemo() {
+function getInputNumbers() {
     $.ajax({
         type: 'GET',
-        url: '/demo',
+        url: '/input-numbers',
     }).then((response) => {
         console.log(response);
     });
