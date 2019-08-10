@@ -40,30 +40,25 @@ function clearInputs() {
 //     });
 // }
 
-// function postInputNumbers() {
-//     const dataForServer = {
-//         firstNumber: $('#js-first-input-number').val(),
-//         secondNumber: $('#js-second-input-number').val(), 
-//     }; 
-
-//     console.log(dataForServer);
-    
-//     $.ajax({
-//         type: 'POST',
-//         url: '/calculate',
-//         data: userInputToCalculate,
-//     }).then((response) => {
-//         console.log(response);
-//         // getCalculation();
-//     });
-// }
+function postInputNumbers() {
+    $.ajax({
+        type: 'POST',
+        url: '/calculate',
+        data: userInputToCalculate,
+    }).then((response) => {
+        console.log(response);
+        // getCalculation();
+    });
+}
 
 function submitNumbers() {
     if ( $('#js-first-input-number').val() && $('#js-second-input-number').val() != '') {
         userInputToCalculate.firstNumber = $('#js-first-input-number').val(); 
         userInputToCalculate.secondNumber = $('#js-second-input-number').val();
+        console.log(userInputToCalculate);
         postInputNumbers();
     } else {
         alert('Enter Both Numbers');
     }
 }// put values from input fields into userInputToCalculate object and post. Alert if user submits without filling out fields  
+
