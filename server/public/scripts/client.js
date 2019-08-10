@@ -10,16 +10,24 @@ function init () {
     console.log('What up');
 
     $('.js-btn-math-symbol').on('click', assignSymbol); // event listener when you click on one of the math symbol buttons
-    $('#js-btn-submit').on('click', postInputNumbers); // event listener when you click submit button 
-    
+    $('#js-btn-submit').on('click', submitNumbers); // event listener when you click submit button 
+    $('#js-btn-clear').on('click', clearInputs);
 }
 
 function assignSymbol() {
-    const mathSymbolClicked = $(this).data('symbol')
+    const mathSymbolClicked = $(this).data('symbol');
+    $(this).addClass('turn-red');
     console.log(mathSymbolClicked);
     
-//     userInputToCalculate.symbol = $(this).data('symbol'); // symbol user clicks on
-// }
+    userInputToCalculate.symbol = mathSymbolClicked; // symbol user clicks on
+}
+
+function clearInputs() {
+    $('#js-first-input-number').val('');
+    $('#js-second-input-number').val('');
+    console.log($('#js-first-input-number').val(''));
+     
+}
 
 // function getInputNumbers() {
 //     $.ajax({
@@ -34,8 +42,8 @@ function assignSymbol() {
 
 // function postInputNumbers() {
 //     const dataForServer = {
-//         firstNumber: $('#first-input-number').val(),
-//         secondNumber: $('#second-input-number').val(), 
+//         firstNumber: $('#js-first-input-number').val(),
+//         secondNumber: $('#js-second-input-number').val(), 
 //     }; 
 
 //     console.log(dataForServer);
@@ -50,12 +58,12 @@ function assignSymbol() {
 //     });
 // }
 
-// function submitNumbers() {
-//     if ( $('#first-input-number').val() && $('#second-input-number').val() != '') {
-//         userInputToCalculate.firstNumber = $('#first-input-number').val(); 
-//         userInputToCalculate.secondNumber = $('#second-input-number').val();
-//         postInputNumbers();
-//     } else {
-//         alert('Enter Both Numbers');
-//     }
-} // put values from input fields into userInputToCalculate object and post. Alert if user submits without filling out fields  
+function submitNumbers() {
+    if ( $('#js-first-input-number').val() && $('#js-second-input-number').val() != '') {
+        userInputToCalculate.firstNumber = $('#js-first-input-number').val(); 
+        userInputToCalculate.secondNumber = $('#js-second-input-number').val();
+        postInputNumbers();
+    } else {
+        alert('Enter Both Numbers');
+    }
+}// put values from input fields into userInputToCalculate object and post. Alert if user submits without filling out fields  

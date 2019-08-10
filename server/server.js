@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = 5000;
 const inputNumbersArray = [];
-const calculatedOutput; // variable to hold number after math has been calculated
+const calculatedOutput = null; // variable to hold number after math has been calculated
 // {
 //     firstNumber: parseInt(req.body.firstNumber),
 //     secondNumber: parseInt(req.body.secondNumber),
@@ -15,7 +15,7 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/calculate', (req,res) => {
-    res.send(calculatedOutput); // sending back inputNumbersArray
+    res.send(calculatedOutput); // sending back what was calculated
 });
 
 app.post('/calculate', (req,res) => {
@@ -30,7 +30,7 @@ app.post('/calculate', (req,res) => {
     console.log('GET ROUTE');
     console.log(inputNumbersArray);
     res.send('GOT IT');
-});
+}); // end of post
 
 app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`);
