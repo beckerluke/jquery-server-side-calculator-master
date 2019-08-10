@@ -34,10 +34,24 @@ function getCalculation() {
         type: 'GET',
         url: '/calculate',
     }).then(function(response) {
-        console.log(response);
-        
-    //    render(response);
+        console.log(response); // received array of objects with calculations
+        render(response); // append to DOM
     });
+}
+
+function render(calculatedOutputArray) {
+    $('#js-container').append(`
+        <h2>${calculatedOutputArray[calculatedOutputArray.length - 1].answer}</h2>`); 
+    
+    for(let i = 0; i < calculatedOutputArray.length; i++) {
+        $('#js-container').append(`
+                <ul>
+                    <li>
+                        ${calculatedOutputArray[i].firstNumber + ' ' + calculatedOutputArray[i].symbol + ' '
+                            + calculatedOutputArray[i].secondNumber + ' = ' + calculatedOutputArray[i].answer}
+                    </li> 
+                </ul>`);
+    }
 }
 
 function postInputNumbers() {
