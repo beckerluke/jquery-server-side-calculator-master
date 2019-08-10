@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = 5000;
-const inputNumbersArray = [];
+let inputNumbersObject = null;
 const calculatedOutput = null; // variable to hold number after math has been calculated
 // {
 //     firstNumber: parseInt(req.body.firstNumber),
 //     secondNumber: parseInt(req.body.secondNumber),
 // }];
-console.log(inputNumbersArray);
+console.log(inputNumbersObject);
 
 
 app.use(express.static('server/public'));
@@ -25,10 +25,12 @@ app.post('/calculate', (req,res) => {
         symbol: req.body.symbol, // math symbol selected before hitting submit
     }; // object to convert and store strings into numbers from post request before being pushed into inputNumbersArray
 
-    inputNumbersArray.push(newInputNumbersToCalculate); 
-    
+    // inputNumbersArray.push(newInputNumbersToCalculate); 
+    inputNumbersObject = newInputNumbersToCalculate;
+    calculateMath(inputNumbersObject);
+
     console.log('GET ROUTE');
-    console.log(inputNumbersArray);
+    console.log(inputNumbersObject);
     res.send('GOT IT');
 }); // end of post
 
@@ -36,6 +38,12 @@ app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`);
 });
 
-// function calculateMath(inputNumbersArray) {
-//     if ( )
+
+// console.log(inputNumbersArray[0].symbol);
+
+function calculateMath(inputNumbersObject) {
+    console.log(inputNumbersObject.symbol);
+//     console.log(inputNumbersArray);
+//     if (inputNumbersArray[2] == )
 // }
+}

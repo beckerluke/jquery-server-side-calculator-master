@@ -29,24 +29,25 @@ function clearInputs() {
      
 }
 
-// function getInputNumbers() {
+// function getCalculation() {
 //     $.ajax({
 //         type: 'GET',
 //         url: '/calculate',
 //     }).then(function(response) {
 //         console.log();
         
-//        render(response);
-//     });
-// }
+// //        render(response);
+// //     });
+// // }
 
 function postInputNumbers() {
     $.ajax({
         type: 'POST',
         url: '/calculate',
-        data: userInputToCalculate,
+        data: userInputToCalculate, // send userInputToCalculate object to server
     }).then((response) => {
         console.log(response);
+        getCalculation();
         // getCalculation();
     });
 }
@@ -60,5 +61,4 @@ function submitNumbers() {
     } else {
         alert('Enter Both Numbers');
     }
-}// put values from input fields into userInputToCalculate object and post. Alert if user submits without filling out fields  
-
+}
