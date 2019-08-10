@@ -32,19 +32,19 @@ app.listen(PORT, () => {
 function calculateMath(newInputNumbersToCalculate) {
     console.log(newInputNumbersToCalculate.symbol);
     switch (newInputNumbersToCalculate.symbol) {
-        case 'add':
+        case '+':
             newInputNumbersToCalculate.answer = newInputNumbersToCalculate.firstNumber + newInputNumbersToCalculate.secondNumber;
             console.log(newInputNumbersToCalculate);
             break;
-        case 'subtract':
+        case '-':
             newInputNumbersToCalculate.answer = newInputNumbersToCalculate.firstNumber - newInputNumbersToCalculate.secondNumber;
             console.log(newInputNumbersToCalculate);
             break;
-        case 'multiply':
+        case '*':
             newInputNumbersToCalculate.answer = newInputNumbersToCalculate.firstNumber * newInputNumbersToCalculate.secondNumber;
             console.log(newInputNumbersToCalculate);
             break;
-        case 'divide':
+        case '/':
             newInputNumbersToCalculate.answer = newInputNumbersToCalculate.firstNumber / newInputNumbersToCalculate.secondNumber;
             console.log(newInputNumbersToCalculate);
             break;
@@ -53,4 +53,4 @@ function calculateMath(newInputNumbersToCalculate) {
     }
     calculatedOutputArray.push(newInputNumbersToCalculate);
     console.log(calculatedOutputArray);
-}
+} // end of calculateMath function

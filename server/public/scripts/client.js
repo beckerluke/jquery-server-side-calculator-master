@@ -16,7 +16,7 @@ function init () {
 
 function assignSymbol() {
     const mathSymbolClicked = $(this).data('symbol');
-    $(this).addClass('turn-red');
+    $(this).toggleClass('turn-red');
     console.log(mathSymbolClicked);
     
     userInputToCalculate.symbol = mathSymbolClicked; // symbol user clicks on
@@ -29,16 +29,16 @@ function clearInputs() {
      
 }
 
-// function getCalculation() {
-//     $.ajax({
-//         type: 'GET',
-//         url: '/calculate',
-//     }).then(function(response) {
-//         console.log();
+function getCalculation() {
+    $.ajax({
+        type: 'GET',
+        url: '/calculate',
+    }).then(function(response) {
+        console.log(response);
         
-// //        render(response);
-// //     });
-// // }
+    //    render(response);
+    });
+}
 
 function postInputNumbers() {
     $.ajax({
