@@ -7,14 +7,14 @@ const userInputToCalculate = {
 $(document).ready(init); 
 
 function init () {
-    console.log('What up');
-
     $('.js-btn-math-symbol').on('click', assignSymbol); // event listener when you click on one of the math symbol buttons
     $('#js-btn-submit').on('click', submitNumbers); // event listener when you click submit button 
     $('#js-btn-clear').on('click', clearInputs);
+
+    getCalculation();
 }
 
-function assignSymbol() {
+function assignSymbol(event) {
     const mathSymbolClicked = $(this).data('symbol');
     $(this).toggleClass('turn-red');
     console.log(mathSymbolClicked);
@@ -22,11 +22,10 @@ function assignSymbol() {
     userInputToCalculate.symbol = mathSymbolClicked; // symbol user clicks on
 }
 
-function clearInputs() {
+function clearInputs(event) {
     $('#js-first-input-number').val('');
     $('#js-second-input-number').val('');
     console.log($('#js-first-input-number').val(''));
-     
 }
 
 function getCalculation() {
@@ -40,6 +39,8 @@ function getCalculation() {
 }
 
 function render(calculatedOutputArray) {
+    $('#js-container').empty();
+    
     $('#js-container').append(`
         <h2>${calculatedOutputArray[calculatedOutputArray.length - 1].answer}</h2>`); 
     
@@ -62,11 +63,10 @@ function postInputNumbers() {
     }).then((response) => {
         console.log(response);
         getCalculation();
-        // getCalculation();
     });
 }
 
-function submitNumbers() {
+function submitNumbers(event) {
     if ( $('#js-first-input-number').val() && $('#js-second-input-number').val() != '') {
         userInputToCalculate.firstNumber = $('#js-first-input-number').val(); 
         userInputToCalculate.secondNumber = $('#js-second-input-number').val();
