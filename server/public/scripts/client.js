@@ -41,6 +41,10 @@ function getCalculation() {
 function render(calculatedOutputArray) {
     $('#js-container').empty();
     
+    if (calculatedOutputArray.length === 0) {
+        return false;
+    } // exits the function if the array is empty
+    
     $('#js-container').append(`
         <h2>${calculatedOutputArray[calculatedOutputArray.length - 1].answer}</h2>`); 
     
